@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:laza/core/routing/routes.dart';
 import 'package:laza/core/theming/styles.dart';
 
 class SigninRow extends StatelessWidget {
@@ -11,7 +13,9 @@ class SigninRow extends StatelessWidget {
       children: [
         Text('Already have an account?', style: Styles.font15GreyRegular),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(Routes.signinScreen);
+          },
           child: Text(' Signin', style: Styles.font15BlackMedium),
         ),
       ],

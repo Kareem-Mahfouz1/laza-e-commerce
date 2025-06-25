@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/features/login/ui/widgets/signin_appbar.dart';
 import 'package:laza/features/login/ui/widgets/signin_row.dart';
-import 'package:laza/features/login/ui/widgets/signup_button.dart';
+import 'package:laza/features/login/ui/widgets/create_account_button.dart';
 import 'package:laza/features/login/ui/widgets/social_signin.dart';
 
 class GetStartedScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class GetStartedScreen extends StatelessWidget {
             Spacer(),
             SigninRow(),
             SizedBox(height: 25.h),
-            SignupButton(),
+            CreateAccountButton(),
           ],
         ),
       ),
