@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:laza/core/routing/routes.dart';
 import 'package:laza/core/theming/styles.dart';
 
-class SigninRow extends StatelessWidget {
-  const SigninRow({super.key});
+class LoginRow extends StatelessWidget {
+  const LoginRow({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class SigninRow extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(Routes.signinScreen);
           },
-          child: Text(' Signin', style: Styles.font15BlackMedium),
+          child: Text(' Login', style: Styles.font15BlackMedium),
         ),
       ],
     );

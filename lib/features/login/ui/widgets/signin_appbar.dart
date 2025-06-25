@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:laza/core/helpers/constants.dart';
 
 class SigninAppbar extends StatelessWidget {
@@ -25,7 +26,9 @@ class SigninAppbar extends StatelessWidget {
             child: IconButton(
               iconSize: 28,
               visualDensity: VisualDensity.compact,
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
               icon: const Icon(Icons.arrow_back, color: Color(0xFF1D1E20)),
             ),
           ),

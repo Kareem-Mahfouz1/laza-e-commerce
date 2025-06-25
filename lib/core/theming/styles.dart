@@ -3,6 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/theming/color_manager.dart';
 
 class Styles {
+  static TextStyle font13BlackMedium = TextStyle(
+    fontSize: 13.sp,
+    color: ColorManager.black,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle font13GreyRegular = TextStyle(
     fontSize: 13.sp,
     color: ColorManager.grey,

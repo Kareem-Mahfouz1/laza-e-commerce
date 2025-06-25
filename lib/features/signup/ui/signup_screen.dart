@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/theming/styles.dart';
+import 'package:laza/core/widgets/bottom_app_button.dart';
 import 'package:laza/features/signup/ui/widgets/signup_appbar.dart';
-import 'package:laza/features/signup/ui/widgets/signup_button.dart';
 import 'package:laza/features/signup/ui/widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class SignupScreen extends StatelessWidget {
             SizedBox(height: 152.h),
             SignupForm(formKey: GlobalKey()),
             const Spacer(),
-            const SignupButton(),
+            BottomAppButton(text: 'Sign Up ', onPressed: () {}),
           ],
         ),
       ),
