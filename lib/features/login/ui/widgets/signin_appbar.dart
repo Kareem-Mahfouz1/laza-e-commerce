@@ -27,7 +27,9 @@ class SigninAppbar extends StatelessWidget {
               iconSize: 28,
               visualDensity: VisualDensity.compact,
               onPressed: () {
-                GoRouter.of(context).pop();
+                GoRouter.of(context).canPop()
+                    ? GoRouter.of(context).pop()
+                    : null;
               },
               icon: const Icon(Icons.arrow_back, color: Color(0xFF1D1E20)),
             ),

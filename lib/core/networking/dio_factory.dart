@@ -6,7 +6,7 @@ class DioFactory {
 
   static Dio? dio;
 
-  static Dio getDio() {
+  static Future<Dio> getDio() async {
     Duration timeOut = Duration(seconds: 25);
 
     if (dio == null) {
@@ -22,12 +22,14 @@ class DioFactory {
   }
 
   static void addDioInterceptors() {
-    dio?.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: false,
-      error: true,
-      compact: true,
-    ));
+    dio?.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
+      ),
+    );
   }
 }

@@ -9,35 +9,41 @@ import 'package:laza/features/login/ui/widgets/terms_and_conditions.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  // final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SigninAppbar(),
-            SizedBox(height: 15.h),
-            Column(
-              children: [
-                Text('Welcome', style: Styles.font28BlackSemiBold),
-                Text(
-                  'Please enter your data to continue',
-                  style: Styles.font15GreyRegular,
-                ),
-              ],
-            ),
-            SizedBox(height: 152.h),
-            LoginForm(formKey: GlobalKey()),
-            const Spacer(),
-            TermsAndConditions(),
-            SizedBox(height: 25.h),
-            BottomAppButton(text: 'Login', onPressed: () {}),
-          ],
+        child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SigninAppbar(),
+              SizedBox(height: 15.h),
+              Column(
+                children: [
+                  Text('Welcome', style: Styles.font28BlackSemiBold),
+                  Text(
+                    'Please enter your data to continue',
+                    style: Styles.font15GreyRegular,
+                  ),
+                ],
+              ),
+              SizedBox(height: 152.h),
+              LoginForm(formKey: GlobalKey()),
+              SizedBox(height: 100.h),
+            ],
+          ),
         ),
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 25.h,
+        children: [
+          TermsAndConditions(),
+          BottomAppButton(text: 'Login', onPressed: () {}),
+        ],
       ),
     );
   }

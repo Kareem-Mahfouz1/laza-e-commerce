@@ -25,13 +25,12 @@ class _LoginFormState extends State<LoginForm> {
             AppTextFormField(
               labelText: 'Email Address',
               validator: Validator.validateEmailAddress,
-              isFinalField: true,
             ),
-
             AppTextFormField(
               labelText: 'Password',
               validator: Validator.validatePassword,
               isObsecureText: _isObsecureText,
+              isFinalField: true,
               sufficIcon: GestureDetector(
                 child: Icon(
                   _isObsecureText ? Icons.visibility : Icons.visibility_off,

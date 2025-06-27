@@ -15,19 +15,22 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SignupAppbar(),
-            SizedBox(height: 15.h),
-            Text('Sign Up', style: Styles.font28BlackSemiBold),
-            SizedBox(height: 152.h),
-            SignupForm(formKey: GlobalKey()),
-            const Spacer(),
-            BottomAppButton(text: 'Sign Up ', onPressed: () {}),
-          ],
+        child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SignupAppbar(),
+              SizedBox(height: 15.h),
+              Text('Sign Up', style: Styles.font28BlackSemiBold),
+              SizedBox(height: 152.h),
+              SignupForm(formKey: GlobalKey()),
+              SizedBox(height: 100.h),
+            ],
+          ),
         ),
       ),
+      bottomNavigationBar: BottomAppButton(text: 'Sign Up', onPressed: () {}),
     );
   }
 }
