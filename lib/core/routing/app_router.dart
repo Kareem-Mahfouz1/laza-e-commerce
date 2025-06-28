@@ -12,7 +12,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const GetStartedScreen()),
       GoRoute(
-        path: Routes.signinScreen,
+        path: Routes.loginScreen,
         builder:
             (context, state) => BlocProvider(
               create: (context) => getIt<LoginCubit>(),

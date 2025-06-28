@@ -26,14 +26,15 @@ class Validator {
     if (value == null || value.isEmpty) {
       return 'Password is required';
     }
-    if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+    if (value.length < 4) {
+      return 'Password must be at least 4 characters';
     }
-    if (!RegExp(
-      r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$',
-    ).hasMatch(value)) {
-      return 'Password must contain at least one letter, one number, and one special character';
-    }
+    // for strict password validation uncomment te following and adjust password length
+    // if (!RegExp(
+    //   r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$',
+    // ).hasMatch(value)) {
+    //   return 'Password must contain at least one letter, one number, and one special character';
+    // }
     return null;
   }
 }

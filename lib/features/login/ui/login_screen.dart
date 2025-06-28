@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/core/widgets/bottom_app_button.dart';
+import 'package:laza/features/login/logic/cubit/login_cubit.dart';
+import 'package:laza/features/login/ui/widgets/login_cubit_listener.dart';
 import 'package:laza/features/login/ui/widgets/login_form.dart';
 import 'package:laza/features/login/ui/widgets/signin_appbar.dart';
 import 'package:laza/features/login/ui/widgets/terms_and_conditions.dart';
@@ -31,8 +34,9 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 152.h),
-              LoginForm(formKey: GlobalKey()),
+              LoginForm(),
               SizedBox(height: 100.h),
+              LoginCubitListener(),
             ],
           ),
         ),
@@ -42,7 +46,14 @@ class LoginScreen extends StatelessWidget {
         spacing: 25.h,
         children: [
           TermsAndConditions(),
-          BottomAppButton(text: 'Login', onPressed: () {}),
+          BottomAppButton(
+            text: 'Login',
+            onPressed: () {
+              if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+                context.read<LoginCubit>().emitLoginState();
+              }
+            },
+          ),
         ],
       ),
     );

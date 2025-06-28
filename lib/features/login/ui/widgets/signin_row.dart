@@ -14,7 +14,7 @@ class LoginRow extends StatelessWidget {
         Text('Already have an account?', style: Styles.font15GreyRegular),
         GestureDetector(
           onTap: () {
-            GoRouter.of(context).push(Routes.signinScreen);
+            GoRouter.of(context).push(Routes.loginScreen);
           },
           child: Text(' Login', style: Styles.font15BlackMedium),
         ),
