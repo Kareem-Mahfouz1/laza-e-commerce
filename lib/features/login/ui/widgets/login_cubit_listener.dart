@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza/core/routing/routes.dart';
@@ -15,10 +14,13 @@ class LoginCubitListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen:
-          (previous, current) => current is Loading || current is Success || current is Error,
+          (previous, current) =>
+              current is LoginLoading ||
+              current is LoginSuccess ||
+              current is LoginError,
       bloc: context.read<LoginCubit>(),
       listener: (context, state) {
-        if (state is Loading) {
+        if (state is LoginLoading) {
           showDialog(
             context: context,
             barrierDismissible: false,
@@ -27,15 +29,15 @@ class LoginCubitListener extends StatelessWidget {
                   child: CircularProgressIndicator(color: ColorManager.primary),
                 ),
           );
-        } else if (state is Success) {
+        } else if (state is LoginSuccess) {
           GoRouter.of(context).go(Routes.homeScreen);
-        } else if (state is Error) {
+        } else if (state is LoginError) {
           context.pop();
           showDialog(
             context: context,
             builder:
                 (context) => AlertDialog(
-                  icon: const Icon(Icons.error, color: Colors.red, size: 32),
+                  icon: const Icon(Icons.error, color: Colors.red, size: 40),
                   content: Text(state.error, style: Styles.font15BlackMedium),
                   actions: [
                     TextButton(

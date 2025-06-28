@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:laza/core/networking/api_constants.dart';
 import 'package:laza/features/login/data/models/login_request_body.dart';
 import 'package:laza/features/login/data/models/login_response.dart';
+import 'package:laza/features/signup/data/models/signup_request_body.dart';
+import 'package:laza/features/signup/data/models/signup_response.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 part 'api_service.g.dart';
@@ -12,4 +14,6 @@ abstract class ApiService {
 
   @POST(ApiConstants.login)
   Future<LoginResponse> login(@Body() LoginRequestBody loginRequestBody);
+  @POST(ApiConstants.signup)
+  Future<SignupResponse> signup(@Body() SignupRequestBody signupRequestBody);
 }
