@@ -11,9 +11,3 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
       accessToken: json['access_token'] as String,
       refreshToken: json['refresh_token'] as String,
     );
-
-Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
-    <String, dynamic>{
-      'access_token': instance.accessToken,
-      'refresh_token': instance.refreshToken,
-    };
