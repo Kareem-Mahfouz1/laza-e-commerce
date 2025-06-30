@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "447118434022",
+    "project_id": "laza-77147",
+    "storage_bucket": "laza-77147.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447118434022:android:bc5fe3a4c70d7011c1e527",
+        "android_client_info": {
+          "package_name": "com.example.laza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKkwvjel0AT08Po1MmOOiU-E8hMi13JB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
