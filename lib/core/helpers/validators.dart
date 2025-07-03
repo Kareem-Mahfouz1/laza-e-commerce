@@ -37,4 +37,14 @@ class Validator {
     // }
     return null;
   }
+
+  static String? validateSearch(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Search query is required';
+    }
+    if (value.length < 3) {
+      return 'Search query must be at least 3 characters';
+    }
+    return null;
+  }
 }

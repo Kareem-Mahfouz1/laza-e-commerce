@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza/core/helpers/constants.dart';
+import 'package:laza/core/theming/color_manager.dart';
 
 class SignupAppbar extends StatelessWidget {
   const SignupAppbar({super.key});
@@ -21,7 +22,7 @@ class SignupAppbar extends StatelessWidget {
             height: 45.h,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xFFF5F6FA),
+              color: ColorManager.lightGrey,
             ),
             child: IconButton(
               iconSize: 28,

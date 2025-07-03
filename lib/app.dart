@@ -15,7 +15,10 @@ class LazaApp extends StatelessWidget {
         return MaterialApp.router(
           title: 'Laza App',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(textTheme: GoogleFonts.interTextTheme()),
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            textTheme: GoogleFonts.interTextTheme(),
+          ),
           routerConfig: AppRouter.router,
         );
       },

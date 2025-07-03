@@ -49,7 +49,6 @@ android {
                 type = "string",
                 name = "app_name",
                 value = "Laza development")
-            applicationIdSuffix = ".dev"
         }
         create("production") {
             dimension = "default"

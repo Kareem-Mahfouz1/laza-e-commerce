@@ -23,6 +23,11 @@ class Styles {
     color: ColorManager.black,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle font17BlackSemiBold = TextStyle(
+    fontSize: 17.sp,
+    color: ColorManager.black,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle font17WhiteMedium = TextStyle(
     fontSize: 17.sp,
     color: Colors.white,
