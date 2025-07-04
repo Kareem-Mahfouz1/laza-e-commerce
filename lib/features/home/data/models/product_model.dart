@@ -1,19 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'product.g.dart';
+part 'product_model.g.dart';
 
 @JsonSerializable()
-class Product {
+class ProductModel {
   final int id;
   final String title;
   final String slug;
   final double price;
   final String description;
-  final ItemCategorey category;
+  final ProductCategoryModel category;
   final List<String> images;
   final String creationAt;
   final String updatedAt;
 
-  Product(
+  ProductModel(
     this.slug,
     this.category,
     this.images,
@@ -25,12 +25,12 @@ class Product {
     required this.price,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 }
 
 @JsonSerializable()
-class ItemCategorey {
+class ProductCategoryModel {
   final int id;
   final String name;
   final String slug;
@@ -38,7 +38,7 @@ class ItemCategorey {
   final String creationAt;
   final String updatedAt;
 
-  ItemCategorey(
+  ProductCategoryModel(
     this.slug,
     this.creationAt,
     this.updatedAt, {
@@ -47,6 +47,6 @@ class ItemCategorey {
     required this.image,
   });
 
-  factory ItemCategorey.fromJson(Map<String, dynamic> json) =>
-      _$ItemCategoreyFromJson(json);
+  factory ProductCategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductCategoryModelFromJson(json);
 }

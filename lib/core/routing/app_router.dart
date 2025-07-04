@@ -17,7 +17,7 @@ abstract class AppRouter {
         path: Routes.loginScreen,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => getIt<LoginCubit>(),
+              create: (context) => LoginCubit(getIt()),
               child: const LoginScreen(),
             ),
       ),
@@ -25,7 +25,7 @@ abstract class AppRouter {
         path: Routes.signupScreen,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => getIt<SignupCubit>(),
+              create: (context) => SignupCubit(getIt()),
               child: const SignupScreen(),
             ),
       ),

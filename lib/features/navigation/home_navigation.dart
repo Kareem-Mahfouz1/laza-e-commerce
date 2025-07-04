@@ -4,7 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:laza/core/di/dependency_injection.dart';
 import 'package:laza/core/helpers/assets.dart';
 import 'package:laza/core/theming/color_manager.dart';
-import 'package:laza/features/home/logic/cubit/products_cubit.dart';
+import 'package:laza/features/home/logic/categories_cubit/categories_cubit.dart';
+import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
 import 'package:laza/features/home/ui/home_screen.dart';
 
 class HomeNavigation extends StatefulWidget {
@@ -18,8 +19,13 @@ class _HomeNavigationState extends State<HomeNavigation> {
   int currentIndex = 0;
 
   final List<Widget Function()> screens = [
-    () => BlocProvider(
-      create: (context) => getIt<ProductsCubit>(),
+    () => MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ProductsCubit(getIt())),
+        BlocProvider(
+          create: (context) => CategoriesCubit(getIt())..getCategories(),
+        ),
+      ],
       child: HomeScreen(),
     ),
     () => HomeScreen(),
@@ -32,6 +38,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
     return Scaffold(
       body: screens[currentIndex](),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         showUnselectedLabels: false,
         selectedItemColor: ColorManager.primary,
         currentIndex: currentIndex,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza/features/home/logic/cubit/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
 
 class IsLoadingBlocConsumer extends StatelessWidget {
   const IsLoadingBlocConsumer({super.key});
@@ -8,19 +8,20 @@ class IsLoadingBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductsCubit, ProductsState>(
+      buildWhen: (previous, current) => current is ProductsSuccess,
       listener: (context, state) {},
-      builder:
-          (context, state) =>
-              context.read<ProductsCubit>().isLoading
-                  ? const SliverToBoxAdapter(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                  )
-                  : const SliverToBoxAdapter(child: SizedBox.shrink()),
+      builder: (context, state) {
+        return !context.read<ProductsCubit>().isInitialLoading
+            ? const SliverToBoxAdapter(
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            )
+            : const SliverToBoxAdapter(child: SizedBox.shrink());
+      },
     );
   }
 }

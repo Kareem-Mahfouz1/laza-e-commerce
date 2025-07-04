@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:laza/core/networking/api_result.dart';
-import 'package:laza/features/home/data/models/product.dart';
+import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/data/models/product_pagination_query.dart';
 import 'package:laza/features/home/data/repos/home_repo.dart';
 
@@ -14,16 +14,19 @@ class ProductsCubit extends Cubit<ProductsState> {
   final int _limit = 10;
   int _offset = 0;
   bool isLoading = false;
+  bool isInitialLoading = false;
   bool _hasMore = true;
   // ignore: prefer_final_fields
-  List<Product> _allProducts = [];
+  List<ProductModel> _allProducts = [];
 
   void getInitialProducts() async {
+    isInitialLoading = true;
     _offset = 0;
     _hasMore = true;
     _allProducts.clear();
     emit(ProductsState.loading());
     await _getProducts();
+    isInitialLoading = false;
   }
 
   void getMoreProducts() async {
@@ -44,7 +47,7 @@ class ProductsCubit extends Cubit<ProductsState> {
         } else {
           _offset += _limit;
           _allProducts.addAll(products);
-          emit(ProductsState.success(List<Product>.from(_allProducts)));
+          emit(ProductsState.success(List<ProductModel>.from(_allProducts)));
         }
         break;
       case Failure():

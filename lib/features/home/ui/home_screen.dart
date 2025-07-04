@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/helpers/constants.dart';
 import 'package:laza/core/theming/styles.dart';
-import 'package:laza/features/home/logic/cubit/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
 import 'package:laza/features/home/ui/widgets/catigories_list.dart';
 import 'package:laza/features/home/ui/widgets/hello_row.dart';
 import 'package:laza/features/home/ui/widgets/home_appbar.dart';

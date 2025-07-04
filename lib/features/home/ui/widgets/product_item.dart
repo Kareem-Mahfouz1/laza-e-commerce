@@ -5,11 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:laza/core/helpers/assets.dart';
 import 'package:laza/core/theming/color_manager.dart';
 import 'package:laza/core/theming/styles.dart';
-import 'package:laza/features/home/data/models/product.dart';
+import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ProductItem extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
   const ProductItem({super.key, required this.product});
 
   @override
@@ -70,6 +70,7 @@ class ProductItem extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: 5.h),
         Text(
           product.title,
           style: Styles.font13BlackMedium,

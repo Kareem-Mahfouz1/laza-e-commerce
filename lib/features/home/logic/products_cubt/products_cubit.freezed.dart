@@ -110,11 +110,11 @@ String toString() {
 
 
 class ProductsSuccess implements ProductsState {
-  const ProductsSuccess(final  List<Product> products): _products = products;
+  const ProductsSuccess(final  List<ProductModel> products): _products = products;
   
 
- final  List<Product> _products;
- List<Product> get products {
+ final  List<ProductModel> _products;
+ List<ProductModel> get products {
   if (_products is EqualUnmodifiableListView) return _products;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_products);
@@ -151,7 +151,7 @@ abstract mixin class $ProductsSuccessCopyWith<$Res> implements $ProductsStateCop
   factory $ProductsSuccessCopyWith(ProductsSuccess value, $Res Function(ProductsSuccess) _then) = _$ProductsSuccessCopyWithImpl;
 @useResult
 $Res call({
- List<Product> products
+ List<ProductModel> products
 });
 
 
@@ -171,7 +171,7 @@ class _$ProductsSuccessCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? products = null,}) {
   return _then(ProductsSuccess(
 null == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
-as List<Product>,
+as List<ProductModel>,
   ));
 }
 

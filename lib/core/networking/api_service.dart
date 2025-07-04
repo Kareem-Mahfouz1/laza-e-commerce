@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:laza/core/networking/api_constants.dart';
-import 'package:laza/features/home/data/models/product.dart';
+import 'package:laza/features/home/data/models/category_model.dart';
+import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/login/data/models/login_request_body.dart';
 import 'package:laza/features/login/data/models/login_response.dart';
 import 'package:laza/features/signup/data/models/signup_request_body.dart';
@@ -18,7 +19,9 @@ abstract class ApiService {
   @POST(ApiConstants.signup)
   Future<SignupResponse> signup(@Body() SignupRequestBody signupRequestBody);
   @GET(ApiConstants.products)
-  Future<List<Product>> getProducts(
+  Future<List<ProductModel>> getProducts(
     @Queries() Map<String, dynamic> productsPaginationQuery,
   );
+  @GET(ApiConstants.categories)
+  Future<List<CategoryModel>> getCategories();
 }
