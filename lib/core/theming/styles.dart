@@ -38,6 +38,11 @@ class Styles {
     color: Colors.white,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle font22BlackSemiBold = TextStyle(
+    fontSize: 22.sp,
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle font28BlackSemiBold = TextStyle(
     fontSize: 28.sp,
     color: Colors.black,
