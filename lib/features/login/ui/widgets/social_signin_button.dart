@@ -30,7 +30,11 @@ class SocialSigninButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(logo, height: 26),
+            SvgPicture.asset(
+              logo,
+              height: 26,
+              allowDrawingOutsideViewBox: true,
+            ),
             SizedBox(width: 4),
             Text(text, style: Styles.font17WhiteSemiBold),
           ],

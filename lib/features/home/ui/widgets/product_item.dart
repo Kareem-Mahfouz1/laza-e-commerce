@@ -30,6 +30,7 @@ class ProductItem extends StatelessWidget {
               FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
                 image: product.images[0],
+                filterQuality: FilterQuality.high,
                 fit: BoxFit.cover,
                 height: 200.h,
               ),
@@ -61,6 +62,7 @@ class ProductItem extends StatelessWidget {
                             const Color.fromARGB(255, 65, 69, 74),
                             BlendMode.srcIn,
                           ),
+                          allowDrawingOutsideViewBox: true,
                         ),
                       ),
                     ),

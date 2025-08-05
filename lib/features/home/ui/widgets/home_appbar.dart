@@ -20,7 +20,10 @@ class HomeAppbar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: SvgPicture.asset(Assets.menuIconSvg),
+            icon: SvgPicture.asset(
+              Assets.menuIconSvg,
+              allowDrawingOutsideViewBox: true,
+            ),
             iconSize: 30,
             onPressed: () {},
             style: ButtonStyle(
@@ -29,7 +32,10 @@ class HomeAppbar extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: SvgPicture.asset(Assets.bagIconSvg),
+            icon: SvgPicture.asset(
+              Assets.bagIconSvg,
+              allowDrawingOutsideViewBox: true,
+            ),
             iconSize: 30,
             onPressed: () {},
             style: ButtonStyle(

@@ -53,6 +53,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
             icon: SvgPicture.asset(
               Assets.homeIconSvg,
               colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
+              allowDrawingOutsideViewBox: true,
               height: 22,
             ),
             label: 'Home',
@@ -62,6 +63,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
             icon: SvgPicture.asset(
               Assets.heartIconSvg,
               colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
+              allowDrawingOutsideViewBox: true,
               height: 24,
             ),
             label: 'Wishlist',
@@ -71,6 +73,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
             icon: SvgPicture.asset(
               Assets.profileIconSvg,
               colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
+              allowDrawingOutsideViewBox: true,
               height: 22,
             ),
             label: 'Profile',

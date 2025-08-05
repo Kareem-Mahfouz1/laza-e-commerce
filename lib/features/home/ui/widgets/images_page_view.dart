@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:laza/core/helpers/assets.dart';
 
 class ImagesPageView extends StatelessWidget {
   const ImagesPageView({
@@ -14,10 +13,9 @@ class ImagesPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: pageController,
-      itemCount: 3,
+      itemCount: images.length,
       itemBuilder:
-          (context, index) =>
-              Image.asset(Assets.testProduct, fit: BoxFit.cover),
+          (context, index) => Image.network(images[index], fit: BoxFit.cover),
     );
   }
 }

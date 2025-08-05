@@ -50,6 +50,7 @@ class HomeSearchBar extends StatelessWidget {
               child: SvgPicture.asset(
                 Assets.searchIconSvg,
                 colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                allowDrawingOutsideViewBox: true,
               ),
             ),
           ),

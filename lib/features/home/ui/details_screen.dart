@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/helpers/constants.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/core/widgets/bottom_app_button.dart';
+// import 'package:laza/core/widgets/bottom_app_button.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/ui/widgets/description_column.dart';
 import 'package:laza/features/home/ui/widgets/images_stack.dart';
@@ -25,7 +26,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ImagesStack(pageController: _pageController),
+              ImagesStack(
+                pageController: _pageController,
+                images: widget.product.images,
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                 child: SizedBox(
@@ -57,6 +61,32 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "Total Price",
+                      style: Styles.font15BlackMedium.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text('with VAT,SD', style: Styles.font13GreyRegular),
+                  ],
+                ),
+                Text("\$125", style: Styles.font17BlackSemiBold),
+              ],
+            ),
+          ),
+          BottomAppButton(text: 'Add to Cart', onPressed: () {}),
+        ],
       ),
     );
   }
