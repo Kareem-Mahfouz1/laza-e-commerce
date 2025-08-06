@@ -28,4 +28,19 @@ class HomeRepo {
       return ApiResult.failure(ErrorHandler.handle(error));
     }
   }
+
+  Future<ApiResult<List<ProductModel>>> getCategoryProducts(
+    int categoryId,
+    ProductPaginationQuery query,
+  ) async {
+    try {
+      final response = await _apiService.getCategoryProducts(
+        categoryId: categoryId,
+        productsPaginationQuery: query.toJson(),
+      );
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
 }

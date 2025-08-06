@@ -24,4 +24,10 @@ abstract class ApiService {
   );
   @GET(ApiConstants.categories)
   Future<List<CategoryModel>> getCategories();
+
+  @GET(ApiConstants.products)
+  Future<List<ProductModel>> getCategoryProducts({
+    @Query('categoryId') required int categoryId,
+    @Queries() Map<String, dynamic> productsPaginationQuery = const {},
+  });
 }

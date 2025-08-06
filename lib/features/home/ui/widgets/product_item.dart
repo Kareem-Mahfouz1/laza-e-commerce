@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:laza/core/helpers/assets.dart';
+import 'package:laza/core/helpers/image_sanitizer.dart';
 import 'package:laza/core/theming/color_manager.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
@@ -29,7 +30,7 @@ class ProductItem extends StatelessWidget {
               ),
               FadeInImage.memoryNetwork(
                 placeholder: kTransparentImage,
-                image: product.images[0],
+                image: sanitizeImageUrl(product.images[0]),
                 filterQuality: FilterQuality.high,
                 fit: BoxFit.cover,
                 height: 200.h,

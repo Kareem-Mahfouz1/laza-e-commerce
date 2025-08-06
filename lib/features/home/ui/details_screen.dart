@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laza/core/helpers/constants.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/core/widgets/bottom_app_button.dart';
-// import 'package:laza/core/widgets/bottom_app_button.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/ui/widgets/description_column.dart';
 import 'package:laza/features/home/ui/widgets/images_stack.dart';
@@ -50,7 +49,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                       NameAndPriceRow(product: widget.product),
                       SizedBox(height: 10.h),
-                      SizeSelector(),
+                      (widget.product.category.slug != 'electronics' &&
+                              widget.product.category.slug != 'furniture')
+                          ? SizeSelector()
+                          : Container(),
                       SizedBox(height: 20.h),
                       DescriptionColumn(),
                       SizedBox(height: 20.h),
@@ -63,6 +65,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
       ),
       bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: EdgeInsets.all(20),
@@ -81,7 +84,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Text('with VAT,SD', style: Styles.font13GreyRegular),
                   ],
                 ),
-                Text("\$125", style: Styles.font17BlackSemiBold),
+                Text(
+                  "\$${widget.product.price}",
+                  style: Styles.font17BlackSemiBold,
+                ),
               ],
             ),
           ),

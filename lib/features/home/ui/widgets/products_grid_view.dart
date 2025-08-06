@@ -7,8 +7,13 @@ import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/ui/widgets/product_item.dart';
 
 class ProductsGridView extends StatelessWidget {
+  const ProductsGridView({
+    super.key,
+    required this.products,
+    required this.showLoader,
+  });
   final List<ProductModel> products;
-  const ProductsGridView({super.key, required this.products});
+  final bool showLoader;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +21,19 @@ class ProductsGridView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       sliver: SliverGrid(
         delegate: SliverChildBuilderDelegate((context, index) {
-          return GestureDetector(
-            onTap: () {
-              GoRouter.of(
-                context,
-              ).push(Routes.detailsScreen, extra: products[index]);
-            },
-            child: ProductItem(product: products[index]),
-          );
-        }, childCount: products.length),
+          if (index < products.length) {
+            return GestureDetector(
+              onTap: () {
+                GoRouter.of(
+                  context,
+                ).push(Routes.detailsScreen, extra: products[index]);
+              },
+              child: ProductItem(product: products[index]),
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        }, childCount: showLoader ? products.length + 1 : products.length),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: .575,

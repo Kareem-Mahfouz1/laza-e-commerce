@@ -2,7 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laza/core/di/dependency_injection.dart';
 import 'package:laza/core/routing/routes.dart';
+import 'package:laza/features/home/data/models/category_model.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
+import 'package:laza/features/home/logic/category_products_cubit/category_products_cubit.dart';
+import 'package:laza/features/home/ui/category_screen.dart';
 import 'package:laza/features/home/ui/details_screen.dart';
 import 'package:laza/features/login/logic/cubit/login_cubit.dart';
 // import 'package:laza/features/login/ui/get_started_screen.dart';
@@ -36,6 +39,14 @@ abstract class AppRouter {
         builder:
             (context, state) =>
                 DetailsScreen(product: state.extra! as ProductModel),
+      ),
+      GoRoute(
+        path: Routes.categoryScreen,
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => CategoryProductsCubit(getIt()),
+              child: CategoryScreen(category: state.extra! as CategoryModel),
+            ),
       ),
     ],
   );

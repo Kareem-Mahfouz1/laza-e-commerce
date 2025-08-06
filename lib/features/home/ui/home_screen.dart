@@ -8,7 +8,6 @@ import 'package:laza/features/home/ui/widgets/catigories_list.dart';
 import 'package:laza/features/home/ui/widgets/hello_row.dart';
 import 'package:laza/features/home/ui/widgets/home_appbar.dart';
 import 'package:laza/features/home/ui/widgets/home_search_bar.dart';
-import 'package:laza/features/home/ui/widgets/is_loading_bloc_consumer.dart';
 import 'package:laza/features/home/ui/widgets/products_grid_view.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,8 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverToBoxAdapter(child: SizedBox(height: 18.h)),
             BlocBuilder<ProductsCubit, ProductsState>(
               builder: (context, state) {
+                final cubit = context.read<ProductsCubit>();
                 if (state is ProductsSuccess) {
-                  return ProductsGridView(products: state.products);
+                  return ProductsGridView(
+                    products: state.products,
+                    showLoader: cubit.isLoading,
+                  );
                 } else if (state is ProductsError) {
                   return SliverToBoxAdapter(child: Text(state.error));
                 } else {
@@ -79,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
             ),
-            IsLoadingBlocConsumer(),
           ],
         ),
       ),
