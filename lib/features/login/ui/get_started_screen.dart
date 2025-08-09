@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:laza/core/routing/routes.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/core/widgets/bottom_app_button.dart';
-import 'package:laza/features/login/ui/widgets/signin_appbar.dart';
 import 'package:laza/features/login/ui/widgets/signin_row.dart';
 import 'package:laza/features/login/ui/widgets/social_signin.dart';
 
@@ -18,8 +17,7 @@ class GetStartedScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SigninAppbar(),
-            SizedBox(height: 15.h),
+            SizedBox(height: 80.h),
             Text('Let\'s Get Started', style: Styles.font28BlackSemiBold),
             SizedBox(height: 190.h),
             SocialSignin(),

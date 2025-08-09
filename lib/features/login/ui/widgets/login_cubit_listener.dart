@@ -30,7 +30,7 @@ class LoginCubitListener extends StatelessWidget {
                 ),
           );
         } else if (state is LoginSuccess) {
-          GoRouter.of(context).go(Routes.homeScreen);
+          GoRouter.of(context).go(Routes.homeNavigationScreen);
         } else if (state is LoginError) {
           context.pop();
           showDialog(
