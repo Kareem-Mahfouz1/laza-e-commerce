@@ -5,10 +5,10 @@ import 'package:laza/core/helpers/constants.dart';
 import 'package:laza/core/theming/color_manager.dart';
 import 'package:laza/core/theming/styles.dart';
 
-class CategoryAppbar extends StatelessWidget {
-  const CategoryAppbar({super.key, required this.categoryName});
+class ScreenAppbar extends StatelessWidget {
+  const ScreenAppbar({super.key, required this.title});
 
-  final String categoryName;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class CategoryAppbar extends StatelessWidget {
               icon: const Icon(Icons.arrow_back, color: Color(0xFF1D1E20)),
             ),
           ),
-          Text(categoryName, style: Styles.font17BlackSemiBold),
+          Text(title, style: Styles.font17BlackSemiBold),
           Container(width: 45.w),
         ],
       ),

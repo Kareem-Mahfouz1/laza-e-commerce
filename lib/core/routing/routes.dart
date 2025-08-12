@@ -5,4 +5,6 @@ abstract class Routes {
   static const String homeNavigationScreen = '/homeNavigationScreen';
   static const String detailsScreen = '/detailsScreen';
   static const String categoryScreen = '/categoryScreen';
+  static const String popularProductsScreen = '/popularProductsScreen';
+  static const String newlyAddedScreen = '/newlyAddedScreen';
 }

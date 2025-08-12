@@ -14,19 +14,16 @@ class ProductsCubit extends Cubit<ProductsState> {
   final int _limit = 10;
   int _offset = 0;
   bool isLoading = false;
-  // bool isInitialLoading = false;
   bool _hasMore = true;
   // ignore: prefer_final_fields
   List<ProductModel> _allProducts = [];
 
   void getInitialProducts() async {
-    // isInitialLoading = true;
     _offset = 0;
     _hasMore = true;
     _allProducts.clear();
     emit(ProductsState.loading());
     await _getProducts();
-    // isInitialLoading = false;
   }
 
   void getMoreProducts() async {

@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza/features/home/data/models/category_model.dart';
-import 'package:laza/features/home/logic/category_products_cubit/category_products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
 import 'package:laza/features/home/ui/widgets/products_sliver_grid_view.dart';
 import 'package:laza/features/home/ui/widgets/screen_appbar.dart';
 
-class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key, required this.category});
-  final CategoryModel category;
+class NewlyAddedScreen extends StatefulWidget {
+  const NewlyAddedScreen({super.key});
 
   @override
-  State<CategoryScreen> createState() => _CategoryScreenState();
+  State<NewlyAddedScreen> createState() => _NewlyAddedScreenState();
 }
 
-class _CategoryScreenState extends State<CategoryScreen> {
+class _NewlyAddedScreenState extends State<NewlyAddedScreen> {
   final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
-    final cubit = context.read<CategoryProductsCubit>();
-    cubit.getInitialCategoryProducts(widget.category.id);
+    final cubit = context.read<ProductsCubit>();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
-              _scrollController.position.maxScrollExtent - 300 &&
+              _scrollController.position.maxScrollExtent - 100 &&
           !cubit.isLoading) {
-        cubit.getMoreCategoryProducts(widget.category.id);
+        cubit.getMoreProducts();
       }
     });
 
@@ -43,16 +40,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
         child: CustomScrollView(
           controller: _scrollController,
           slivers: [
-            SliverToBoxAdapter(
-              child: ScreenAppbar(title: widget.category.name),
-            ),
+            SliverToBoxAdapter(child: ScreenAppbar(title: 'Newly Added')),
             const SliverToBoxAdapter(child: SizedBox(height: 25)),
-            BlocBuilder<CategoryProductsCubit, CategoryProductsState>(
+            BlocBuilder<ProductsCubit, ProductsState>(
               builder: (context, state) {
-                //TODO
-                if (state is CategoryProductsSuccess) {
+                if (state is ProductsSuccess) {
                   return ProductsSliverGridView(products: state.products);
-                } else if (state is CategoryProductsFailure) {
+                } else if (state is ProductsError) {
                   return SliverToBoxAdapter(child: Text(state.error));
                 } else {
                   return const SliverToBoxAdapter(

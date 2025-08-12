@@ -21,10 +21,8 @@ class _HomeNavigationState extends State<HomeNavigation> {
   final List<Widget Function()> screens = [
     () => MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ProductsCubit(getIt())),
-        BlocProvider(
-          create: (context) => CategoriesCubit(getIt())..getCategories(),
-        ),
+        BlocProvider(create: (context) => getIt.get<ProductsCubit>()),
+        BlocProvider(create: (context) => CategoriesCubit(getIt())),
       ],
       child: HomeScreen(),
     ),

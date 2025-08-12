@@ -22,8 +22,7 @@ class CatigoriesList extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Choose Brand', style: Styles.font17BlackSemiBold),
-              Text('View All', style: Styles.font13GreyRegular),
+              Text('Choose Category', style: Styles.font17BlackSemiBold),
             ],
           ),
         ),

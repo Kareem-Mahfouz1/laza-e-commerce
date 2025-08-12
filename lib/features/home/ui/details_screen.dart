@@ -38,19 +38,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     children: [
                       SizedBox(height: 15.h),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             widget.product.category.name,
                             style: Styles.font13GreyRegular,
                           ),
-                          Spacer(),
                           Text('Price', style: Styles.font13GreyRegular),
                         ],
                       ),
                       NameAndPriceRow(product: widget.product),
                       SizedBox(height: 10.h),
-                      (widget.product.category.slug != 'electronics' &&
-                              widget.product.category.slug != 'furniture')
+                      (widget.product.category.slug == 'clothes' ||
+                              widget.product.category.slug == 'shoes')
                           ? SizeSelector()
                           : Container(),
                       SizedBox(height: 20.h),
