@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:laza/features/home/ui/widgets/products_sliver_grid_view.dart';
 import 'package:laza/features/home/ui/widgets/screen_appbar.dart';
 
@@ -47,7 +47,9 @@ class _NewlyAddedScreenState extends State<NewlyAddedScreen> {
                 if (state is ProductsSuccess) {
                   return ProductsSliverGridView(products: state.products);
                 } else if (state is ProductsError) {
-                  return SliverToBoxAdapter(child: Text(state.error));
+                  return SliverToBoxAdapter(
+                    child: Text(state.errorModel.message!),
+                  );
                 } else {
                   return const SliverToBoxAdapter(
                     child: Center(child: CircularProgressIndicator()),

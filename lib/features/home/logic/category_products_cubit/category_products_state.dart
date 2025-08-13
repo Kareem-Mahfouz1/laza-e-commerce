@@ -6,6 +6,7 @@ class CategoryProductsState with _$CategoryProductsState {
   const factory CategoryProductsState.loading() = CategoryProductsLoading;
   const factory CategoryProductsState.success(List<ProductModel> products) =
       CategoryProductsSuccess;
-  const factory CategoryProductsState.failure({required String error}) =
-      CategoryProductsFailure;
+  const factory CategoryProductsState.failure({
+    required ApiErrorModel errorModel,
+  }) = CategoryProductsFailure;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:laza/core/networking/api_error_model.dart';
 import 'package:laza/core/networking/api_result.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/data/models/product_pagination_query.dart';
@@ -20,13 +21,11 @@ class CategoryProductsCubit extends Cubit<CategoryProductsState> {
   List<ProductModel> _allProducts = [];
 
   void getInitialCategoryProducts(int categoryId) async {
-    // isInitialLoading = true;
     _offset = 0;
     _hasMore = true;
     _allProducts.clear();
     emit(CategoryProductsState.loading());
     await _getProducts(categoryId);
-    // isInitialLoading = false;
   }
 
   void getMoreCategoryProducts(int categoryId) async {
@@ -55,31 +54,10 @@ class CategoryProductsCubit extends Cubit<CategoryProductsState> {
           );
         }
         break;
-      case Failure():
-        emit(
-          CategoryProductsState.failure(
-            error: result.errorHandler.apiErrorModel.message!,
-          ),
-        );
+      case Failure(apiErrorModel: final errorModel):
+        emit(CategoryProductsState.failure(errorModel: errorModel));
         break;
     }
     isLoading = false;
   }
-
-  // Future<void> getCategoryProducts(int categoryId) async {
-  //   emit(CategoryProductsState.loading());
-  //   final result = await homeRepo.getCategoryProducts(categoryId);
-  //   switch (result) {
-  //     case Success(data: final products):
-  //       emit(CategoryProductsState.success(List<ProductModel>.from(products)));
-  //       break;
-  //     case Failure():
-  //       emit(
-  //         CategoryProductsState.failure(
-  //           error: result.errorHandler.apiErrorModel.message!,
-  //         ),
-  //       );
-  //       break;
-  //   }
-  // }
 }

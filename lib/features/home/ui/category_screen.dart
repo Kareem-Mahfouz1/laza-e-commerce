@@ -49,11 +49,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
             const SliverToBoxAdapter(child: SizedBox(height: 25)),
             BlocBuilder<CategoryProductsCubit, CategoryProductsState>(
               builder: (context, state) {
-                //TODO
                 if (state is CategoryProductsSuccess) {
                   return ProductsSliverGridView(products: state.products);
                 } else if (state is CategoryProductsFailure) {
-                  return SliverToBoxAdapter(child: Text(state.error));
+                  return SliverToBoxAdapter(
+                    child: Text(state.errorModel.message!),
+                  );
                 } else {
                   return const SliverToBoxAdapter(
                     child: Center(child: CircularProgressIndicator()),

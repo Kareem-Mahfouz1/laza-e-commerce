@@ -49,7 +49,7 @@ class CatigoriesList extends StatelessWidget {
                   },
                 );
               } else if (state is CategoriesError) {
-                return Center(child: Text(state.error));
+                return Center(child: Text(state.errorModel.message!));
               } else {
                 return const Center(child: CircularProgressIndicator());
               }

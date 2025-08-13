@@ -182,10 +182,10 @@ as List<ProductModel>,
 
 
 class ProductsError implements ProductsState {
-  const ProductsError({required this.error});
+  const ProductsError({required this.errorModel});
   
 
- final  String error;
+ final  ApiErrorModel errorModel;
 
 /// Create a copy of ProductsState
 /// with the given fields replaced by the non-null parameter values.
@@ -197,16 +197,16 @@ $ProductsErrorCopyWith<ProductsError> get copyWith => _$ProductsErrorCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsError&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsError&&(identical(other.errorModel, errorModel) || other.errorModel == errorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,errorModel);
 
 @override
 String toString() {
-  return 'ProductsState.error(error: $error)';
+  return 'ProductsState.error(errorModel: $errorModel)';
 }
 
 
@@ -217,7 +217,7 @@ abstract mixin class $ProductsErrorCopyWith<$Res> implements $ProductsStateCopyW
   factory $ProductsErrorCopyWith(ProductsError value, $Res Function(ProductsError) _then) = _$ProductsErrorCopyWithImpl;
 @useResult
 $Res call({
- String error
+ ApiErrorModel errorModel
 });
 
 
@@ -234,10 +234,10 @@ class _$ProductsErrorCopyWithImpl<$Res>
 
 /// Create a copy of ProductsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? errorModel = null,}) {
   return _then(ProductsError(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
+errorModel: null == errorModel ? _self.errorModel : errorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 

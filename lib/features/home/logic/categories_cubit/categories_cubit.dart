@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:laza/core/networking/api_error_model.dart';
 import 'package:laza/core/networking/api_result.dart';
 import 'package:laza/features/home/data/models/category_model.dart';
 import 'package:laza/features/home/data/repos/home_repo.dart';
@@ -18,12 +19,8 @@ class CategoriesCubit extends Cubit<CategoriesState> {
       case Success(data: final categories):
         emit(CategoriesState.success(categories));
         break;
-      case Failure():
-        emit(
-          CategoriesState.error(
-            error: result.errorHandler.apiErrorModel.message!,
-          ),
-        );
+      case Failure(apiErrorModel: final errorModel):
+        emit(CategoriesState.error(errorModel: errorModel));
         break;
     }
   }

@@ -182,10 +182,10 @@ as List<CategoryModel>,
 
 
 class CategoriesError implements CategoriesState {
-  const CategoriesError({required this.error});
+  const CategoriesError({required this.errorModel});
   
 
- final  String error;
+ final  ApiErrorModel errorModel;
 
 /// Create a copy of CategoriesState
 /// with the given fields replaced by the non-null parameter values.
@@ -197,16 +197,16 @@ $CategoriesErrorCopyWith<CategoriesError> get copyWith => _$CategoriesErrorCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesError&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesError&&(identical(other.errorModel, errorModel) || other.errorModel == errorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,errorModel);
 
 @override
 String toString() {
-  return 'CategoriesState.error(error: $error)';
+  return 'CategoriesState.error(errorModel: $errorModel)';
 }
 
 
@@ -217,7 +217,7 @@ abstract mixin class $CategoriesErrorCopyWith<$Res> implements $CategoriesStateC
   factory $CategoriesErrorCopyWith(CategoriesError value, $Res Function(CategoriesError) _then) = _$CategoriesErrorCopyWithImpl;
 @useResult
 $Res call({
- String error
+ ApiErrorModel errorModel
 });
 
 
@@ -234,10 +234,10 @@ class _$CategoriesErrorCopyWithImpl<$Res>
 
 /// Create a copy of CategoriesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? errorModel = null,}) {
   return _then(CategoriesError(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
+errorModel: null == errorModel ? _self.errorModel : errorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 

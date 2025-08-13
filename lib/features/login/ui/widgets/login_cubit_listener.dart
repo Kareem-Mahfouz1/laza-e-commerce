@@ -38,7 +38,10 @@ class LoginCubitListener extends StatelessWidget {
             builder:
                 (context) => AlertDialog(
                   icon: const Icon(Icons.error, color: Colors.red, size: 40),
-                  content: Text(state.error, style: Styles.font15BlackMedium),
+                  content: Text(
+                    state.errorModel.message!,
+                    style: Styles.font15BlackMedium,
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () {

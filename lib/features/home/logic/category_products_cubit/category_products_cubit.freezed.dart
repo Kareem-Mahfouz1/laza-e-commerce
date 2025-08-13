@@ -182,10 +182,10 @@ as List<ProductModel>,
 
 
 class CategoryProductsFailure implements CategoryProductsState {
-  const CategoryProductsFailure({required this.error});
+  const CategoryProductsFailure({required this.errorModel});
   
 
- final  String error;
+ final  ApiErrorModel errorModel;
 
 /// Create a copy of CategoryProductsState
 /// with the given fields replaced by the non-null parameter values.
@@ -197,16 +197,16 @@ $CategoryProductsFailureCopyWith<CategoryProductsFailure> get copyWith => _$Cate
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryProductsFailure&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryProductsFailure&&(identical(other.errorModel, errorModel) || other.errorModel == errorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => Object.hash(runtimeType,errorModel);
 
 @override
 String toString() {
-  return 'CategoryProductsState.failure(error: $error)';
+  return 'CategoryProductsState.failure(errorModel: $errorModel)';
 }
 
 
@@ -217,7 +217,7 @@ abstract mixin class $CategoryProductsFailureCopyWith<$Res> implements $Category
   factory $CategoryProductsFailureCopyWith(CategoryProductsFailure value, $Res Function(CategoryProductsFailure) _then) = _$CategoryProductsFailureCopyWithImpl;
 @useResult
 $Res call({
- String error
+ ApiErrorModel errorModel
 });
 
 
@@ -234,10 +234,10 @@ class _$CategoryProductsFailureCopyWithImpl<$Res>
 
 /// Create a copy of CategoryProductsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? errorModel = null,}) {
   return _then(CategoryProductsFailure(
-error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as String,
+errorModel: null == errorModel ? _self.errorModel : errorModel // ignore: cast_nullable_to_non_nullable
+as ApiErrorModel,
   ));
 }
 

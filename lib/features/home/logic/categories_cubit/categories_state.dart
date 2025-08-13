@@ -6,6 +6,6 @@ class CategoriesState with _$CategoriesState {
   const factory CategoriesState.loading() = CategoriesLoading;
   const factory CategoriesState.success(List<CategoryModel> categories) =
       CategoriesSuccess;
-  const factory CategoriesState.error({required String error}) =
+  const factory CategoriesState.error({required ApiErrorModel errorModel}) =
       CategoriesError;
 }

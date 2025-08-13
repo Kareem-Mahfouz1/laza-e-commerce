@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:laza/core/networking/api_error_model.dart';
 import 'package:laza/core/networking/api_result.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/data/models/product_pagination_query.dart';
@@ -47,12 +48,8 @@ class ProductsCubit extends Cubit<ProductsState> {
           emit(ProductsState.success(List<ProductModel>.from(_allProducts)));
         }
         break;
-      case Failure():
-        emit(
-          ProductsState.error(
-            error: result.errorHandler.apiErrorModel.message!,
-          ),
-        );
+      case Failure(apiErrorModel: final errorModel):
+        emit(ProductsState.error(errorModel: errorModel));
         break;
     }
     isLoading = false;

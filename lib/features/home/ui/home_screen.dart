@@ -6,7 +6,7 @@ import 'package:laza/core/helpers/constants.dart';
 import 'package:laza/core/routing/routes.dart';
 import 'package:laza/core/theming/styles.dart';
 import 'package:laza/features/home/logic/categories_cubit/categories_cubit.dart';
-import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:laza/features/home/ui/widgets/catigories_list.dart';
 import 'package:laza/features/home/ui/widgets/hello_row.dart';
 import 'package:laza/features/home/ui/widgets/home_appbar.dart';
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       products: state.products.take(4).toList(),
                     );
                   } else if (state is ProductsError) {
-                    return Text(state.error);
+                    return Text(state.errorModel.message!);
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       products: randProducts.take(4).toList(),
                     );
                   } else if (state is ProductsError) {
-                    return Text(state.error);
+                    return Text(state.errorModel.message!);
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }

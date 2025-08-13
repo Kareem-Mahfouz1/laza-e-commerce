@@ -5,7 +5,7 @@ import 'package:laza/core/di/dependency_injection.dart';
 import 'package:laza/core/helpers/assets.dart';
 import 'package:laza/core/theming/color_manager.dart';
 import 'package:laza/features/home/logic/categories_cubit/categories_cubit.dart';
-import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:laza/features/home/ui/home_screen.dart';
 
 class HomeNavigation extends StatefulWidget {

@@ -6,7 +6,7 @@ import 'package:laza/core/routing/routes.dart';
 import 'package:laza/features/home/data/models/category_model.dart';
 import 'package:laza/features/home/data/models/product_model.dart';
 import 'package:laza/features/home/logic/category_products_cubit/category_products_cubit.dart';
-import 'package:laza/features/home/logic/products_cubt/products_cubit.dart';
+import 'package:laza/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:laza/features/home/ui/category_screen.dart';
 import 'package:laza/features/home/ui/details_screen.dart';
 import 'package:laza/features/home/ui/newly_added_screen.dart';

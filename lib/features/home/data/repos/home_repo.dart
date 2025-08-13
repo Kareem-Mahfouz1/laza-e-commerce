@@ -16,7 +16,7 @@ class HomeRepo {
       final response = await _apiService.getProducts(query.toJson());
       return ApiResult.success(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
@@ -25,7 +25,7 @@ class HomeRepo {
       final response = await _apiService.getCategories();
       return ApiResult.success(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
@@ -40,7 +40,7 @@ class HomeRepo {
       );
       return ApiResult.success(response);
     } catch (error) {
-      return ApiResult.failure(ErrorHandler.handle(error));
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 }

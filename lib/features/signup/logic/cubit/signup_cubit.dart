@@ -25,10 +25,8 @@ class SignupCubit extends Cubit<SignupState> {
     switch (result) {
       case Success(data: final signupResponse):
         emit(SignupState.success(signupResponse));
-      case Failure():
-        emit(
-          SignupState.error(error: result.errorHandler.apiErrorModel.message!),
-        );
+      case Failure(apiErrorModel: final errorModel):
+        emit(SignupState.error(errorModel: errorModel));
     }
   }
 }
