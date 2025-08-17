@@ -7,6 +7,7 @@ import 'package:laza/core/theming/color_manager.dart';
 import 'package:laza/features/home/logic/categories_cubit/categories_cubit.dart';
 import 'package:laza/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:laza/features/home/ui/home_screen.dart';
+import 'package:laza/features/wishlist/ui/wishlist_screen.dart';
 
 class HomeNavigation extends StatefulWidget {
   const HomeNavigation({super.key});
@@ -18,65 +19,75 @@ class HomeNavigation extends StatefulWidget {
 class _HomeNavigationState extends State<HomeNavigation> {
   int currentIndex = 0;
 
-  final List<Widget Function()> screens = [
-    () => MultiBlocProvider(
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [HomeScreen(), WishlistScreen()];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt.get<ProductsCubit>()),
         BlocProvider(create: (context) => CategoriesCubit(getIt())),
       ],
-      child: HomeScreen(),
-    ),
-    () => HomeScreen(),
-    () => HomeScreen(),
-    // () => WishlistScreen(),
-    // () => ProfileScreen(),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex](),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        showUnselectedLabels: false,
-        selectedItemColor: ColorManager.primary,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            activeIcon: SizedBox.shrink(),
-            icon: SvgPicture.asset(
-              Assets.homeIconSvg,
-              colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
-              allowDrawingOutsideViewBox: true,
-              height: 22,
+      child: Scaffold(
+        body: screens[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          showUnselectedLabels: false,
+          selectedItemColor: ColorManager.primary,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              activeIcon: SizedBox.shrink(),
+              icon: SvgPicture.asset(
+                Assets.homeIconSvg,
+                colorFilter: ColorFilter.mode(
+                  ColorManager.grey,
+                  BlendMode.srcIn,
+                ),
+                allowDrawingOutsideViewBox: true,
+                height: 22,
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SizedBox.shrink(),
-            icon: SvgPicture.asset(
-              Assets.heartIconSvg,
-              colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
-              allowDrawingOutsideViewBox: true,
-              height: 24,
+            BottomNavigationBarItem(
+              activeIcon: SizedBox.shrink(),
+              icon: SvgPicture.asset(
+                Assets.heartIconSvg,
+                colorFilter: ColorFilter.mode(
+                  ColorManager.grey,
+                  BlendMode.srcIn,
+                ),
+                allowDrawingOutsideViewBox: true,
+                height: 24,
+              ),
+              label: 'Wishlist',
             ),
-            label: 'Wishlist',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SizedBox.shrink(),
-            icon: SvgPicture.asset(
-              Assets.profileIconSvg,
-              colorFilter: ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
-              allowDrawingOutsideViewBox: true,
-              height: 22,
+            BottomNavigationBarItem(
+              activeIcon: SizedBox.shrink(),
+              icon: SvgPicture.asset(
+                Assets.profileIconSvg,
+                colorFilter: ColorFilter.mode(
+                  ColorManager.grey,
+                  BlendMode.srcIn,
+                ),
+                allowDrawingOutsideViewBox: true,
+                height: 22,
+              ),
+              label: 'Profile',
             ),
-            label: 'Profile',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
